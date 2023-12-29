@@ -1,7 +1,10 @@
 mod structs_folder;
+mod enums_folder;
 use structs_folder::my_car_struct::Car;
+use enums_folder::my_weather_enum::Weather;
 use std::io;
 use std::io::Write;
+
 /*
     This is my first function and it involves creating a Struct from another module
     This function also creates a string and prints out some words to the console
@@ -31,4 +34,20 @@ pub fn getting_user_details() -> () {
     .read_line(&mut name)
     .expect("Failed to read line");
     print!("Hi {0}, \nnice to meet you {0}!!!! \n\n", name.trim_end());
+}
+/*
+    This is to use an enum, random case
+*/
+pub fn using_enums() -> () {
+    let rainy: Weather = Weather::Rainy;
+
+    math_base_given_enum(rainy);
+}
+
+pub fn math_base_given_enum(given: Weather) -> () {
+    match given {
+        Weather::Rainy => print!("Today weather is rainy \n\n"),
+        Weather::Sunny => print!("Today weather is sunny \n\n"),
+        Weather::Cloudy => print!("Cannot tell what is the weather \n\n")
+    }
 }
