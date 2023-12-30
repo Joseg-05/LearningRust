@@ -1,10 +1,11 @@
 use crate::functions_folder::structs_folder::my_car_struct::Car;
 use crate::functions_folder::enums_folder::my_weather_enum::Weather;
+use crate::functions_folder::structs_folder::my_person_struct::Person;
+use super::structs_folder::my_person_struct::Body;
 use std::io;
 use std::io::Write;
 /*
-    This is my first function and it involves creating a Struct imported from another module
-    This function also creates a string and prints out some words to the console
+    Return an empty tuple
  */
 pub fn my_first_module_function() -> () {
     let car: Car =  Car { color: String::from("Green"), make: String::from("Toyota") };
@@ -14,7 +15,7 @@ pub fn my_first_module_function() -> () {
     println!("Hello, world!");
 }
 /*
-    This functions creates a bot and grabs the user details
+    Return an empty tuple
 */
 pub fn getting_user_details() -> () {
 
@@ -33,8 +34,7 @@ pub fn getting_user_details() -> () {
     print!("Hi {0}, \nnice to meet you {0}!!!! \n\n", name.trim_end());
 }
 /*
-    This functions initializes a varialbe with an Enum type Weather
-    Inside this function is called another function to proceed to a given match case
+    Return an empty tuple
 */
 pub fn using_enums() -> () {
     let rainy: Weather = Weather::Rainy;
@@ -42,7 +42,8 @@ pub fn using_enums() -> () {
     math_base_given_enum(rainy);
 }
 /*
-    This functino receives a type of Weather and does pattern matching based on the data it receives
+    Returns an empty tuple.*
+    @param {Weahter} given, The Weather that is currently at
 */
 pub fn math_base_given_enum(given: Weather) -> () {
     match given {
@@ -50,4 +51,16 @@ pub fn math_base_given_enum(given: Weather) -> () {
         Weather::Sunny => print!("Today weather is sunny \n\n"),
         Weather::Cloudy => print!("Cannot tell what is the weather \n\n")
     }
+}
+/*
+    Return an empty tuple
+*/
+pub fn using_struct_with_traits_and_functions() -> () {
+    //Creating a new instance of Type Person Struct
+    let user_created: Person = Person::new("Tommy".to_string(), "Lay".to_string(), "tommyLay@gmail.com".to_string());
+    //Destructure a struct
+    let Person { first_name: x, last_name: y,email: z  } = user_created;
+    //OutPut
+    println!("The person that we just created using the beautiful Rust is:");
+    println!("First name is: {} \n Last name is: {} \n The user email is: {}", x.trim_end(), y.trim_end(), z.trim_end());
 }
